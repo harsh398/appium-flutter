@@ -13,7 +13,7 @@
     "android": "APPIUM_OS=android npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "TruongSinh Tran-Nguyen <i@truongsinh.pro",
+  "author": "Enpal",
   "private": true,
   "license": "MIT"
 }
