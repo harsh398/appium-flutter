@@ -8,9 +8,10 @@
 6. Install Appium globally by running `npm i -g appium`
 7. Run the appium server by running `appium --base-path /wd/hub` in a separate terminal
 8. You can find the app apk on the 'apps' directory
-9. Create an Android Emulator Called 'Pixel_4' and run it
-10. cd to the '/test_server/nodejs' directory
-11. Run the test by `APPIUM_OS=android npm start`
+9. Download and install Android Studio from [here](https://developer.android.com/studio "here")
+10. Open Android Studio and create an Android Emulator Called 'Pixel_4' and run it
+11. cd to the '/test_server/nodejs' directory
+12. Run the test by `APPIUM_OS=android npm start`
 
 ------------
 
