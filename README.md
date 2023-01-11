@@ -1,17 +1,16 @@
 ## To run the automation locally
 
-1. Make sure node and npm are installed locally
-2. cd to the '/test_server/driver' directory
-3. `npm install -g typescript` for typescript compile to work globally
-4. `npm install` to install node modules 
-5. Run `npm link`
+1. Download and install Android Studio from [here](https://developer.android.com/studio "here")
+2. Open Android Studio and create an Android Emulator Called 'Pixel_4' and run it
+3. You can find the app apk on the '/test_server/apps' directory
+4. Make sure node and npm are installed locally
+5. Install typescript globally by running `npm i -g typescript`
 6. Install Appium globally by running `npm i -g appium`
-7. Run the appium server by running `appium --base-path /wd/hub` in a separate terminal
-8. You can find the app apk on the 'apps' directory
-9. Download and install Android Studio from [here](https://developer.android.com/studio "here")
-10. Open Android Studio and create an Android Emulator Called 'Pixel_4' and run it
-11. cd to the '/test_server/nodejs' directory
-12. Run the test by `APPIUM_OS=android npm start`
+7. Install Appium Flutter Driver globally by running `npm i -g appium-flutter-driver`
+8. Run the appium server by running `appium --base-path /wd/hub` in a separate terminal
+9. cd to the '/test_server/nodejs' directory
+10. `npm install` to install node modules
+11. Run the test by `APPIUM_OS=android npm start`
 
 ------------
 
