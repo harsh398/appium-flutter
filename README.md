@@ -11,7 +11,7 @@
 9. Run the appium server by running `appium --base-path /wd/hub` in a separate terminal
 10. cd to the '/test_server/nodejs' directory
 11. `npm install` to install node modules
-12. Run the test by `APPIUM_OS=android npm start`
+12. Run the test by `npm start`
 
 ------------
 
