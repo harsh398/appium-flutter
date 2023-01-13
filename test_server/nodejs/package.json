@@ -8,10 +8,7 @@
     "webdriverio": "^8.1.0"
   },
   "scripts": {
-    "start": "node src/test.js",
-    "ios": "APPIUM_OS=ios npm start",
-    "android": "APPIUM_OS=android npm start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm install && node src/test.js"
   },
   "author": "Enpal",
   "private": true,
