@@ -161,6 +161,7 @@ const validateElementPosition = async (driver, buttonFinder) => {
 //     }
 //     ]);
 
+//     // Please don't change this Equal Element
 //     assert.strictEqual(
 //         await driver.getElementText(counterTextFinder),
 //         '3'
@@ -172,20 +173,34 @@ const validateElementPosition = async (driver, buttonFinder) => {
 
 
 /* -------------------------------------------------------------------------- */
-/*                                    Task                                    */
+/*                              Task Description                              */
 /* -------------------------------------------------------------------------- */
 /// Please write a test that is as follows:
 ///
 /// 1. Open the Second Page by tapping on the 'TextButton' widget;
-/// You can find the 'TextButton' widget by type
+///    You can find the 'TextButton' widget by type
 ///
 /// 2. Scroll down to the 'TextField' widget;
-/// You can find the 'TextField' widget by type
+///    You can find the 'TextField' widget by type
 ///
 /// 3. Enter the "Hello World!" value in the 'TextField' widget
-/// 4. Check that the UI has been updated or not
-/// 5. Check that if the "Text" widget contains the
-/// first 10 characters of the "TextField" value;
-/// If there are more, write "..."
+///
+/// 4. Check that the 'TextField' value has been updated or not
+///
+/// 5. Check to see if the 'Text' widget under the 'TextField'
+///    contains the first 10 characters of the 'TextField' value.
+///    If there are more, write "..."
+///    You can find the 'Text' widget by it's value.
 ///
 /// 6. Back to the Home Page
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                  Task Body                                 */
+/* -------------------------------------------------------------------------- */
+// (async () => {
+
+
+
+// })();
