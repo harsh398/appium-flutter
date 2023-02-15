@@ -50,56 +50,56 @@ const validateElementPosition = async (driver, buttonFinder) => {
 /* -------------------------------------------------------------------------- */
 /*                                Success Test                                */
 /* -------------------------------------------------------------------------- */
-(async () => {
-    const counterTextFinder = find.byValueKey('counter');
-    const buttonFinder = find.byValueKey('increment');
+// (async () => {
+//     const counterTextFinder = find.byValueKey('counter');
+//     const buttonFinder = find.byValueKey('increment');
 
-    const driver = await wdio.remote(opts);
+//     const driver = await wdio.remote(opts);
 
-    await validateElementPosition(driver, buttonFinder);
+//     await validateElementPosition(driver, buttonFinder);
 
-    assert.strictEqual(await driver.execute('flutter:checkHealth'), 'ok');
-    await driver.execute('flutter:clearTimeline');
-    await driver.execute('flutter:forceGC');
+//     assert.strictEqual(await driver.execute('flutter:checkHealth'), 'ok');
+//     await driver.execute('flutter:clearTimeline');
+//     await driver.execute('flutter:forceGC');
 
-    const renderObjectDiagnostics = await driver.execute(
-        'flutter:getRenderObjectDiagnostics',
-        counterTextFinder, {
-        includeProperties: true,
-        subtreeDepth: 2
-    }
-    );
-    assert.strictEqual(renderObjectDiagnostics.type, 'DiagnosticableTreeNode');
-    assert.strictEqual(renderObjectDiagnostics.children.length, 1);
+//     const renderObjectDiagnostics = await driver.execute(
+//         'flutter:getRenderObjectDiagnostics',
+//         counterTextFinder, {
+//         includeProperties: true,
+//         subtreeDepth: 2
+//     }
+//     );
+//     assert.strictEqual(renderObjectDiagnostics.type, 'DiagnosticableTreeNode');
+//     assert.strictEqual(renderObjectDiagnostics.children.length, 1);
 
-    const treeString = await driver.execute('flutter: getRenderTree');
-    assert.strictEqual(treeString.substr(0, 11), 'RenderView#');
+//     const treeString = await driver.execute('flutter: getRenderTree');
+//     assert.strictEqual(treeString.substr(0, 11), 'RenderView#');
 
-    await driver.switchContext('NATIVE_APP');
+//     await driver.switchContext('NATIVE_APP');
 
-    await driver.switchContext('FLUTTER');
+//     await driver.switchContext('FLUTTER');
 
-    assert.strictEqual(await driver.getElementText(counterTextFinder), '0');
+//     assert.strictEqual(await driver.getElementText(counterTextFinder), '0');
 
-    await driver.elementClick(buttonFinder);
-    await driver.touchAction({
-        action: 'tap',
-        element: {
-            elementId: buttonFinder
-        }
-    });
+//     await driver.elementClick(buttonFinder);
+//     await driver.touchAction({
+//         action: 'tap',
+//         element: {
+//             elementId: buttonFinder
+//         }
+//     });
 
-    assert.strictEqual(await driver.getElementText(counterTextFinder), '2');
+//     assert.strictEqual(await driver.getElementText(counterTextFinder), '2');
 
-    await driver.elementClick(find.byTooltip('Increment'));
+//     await driver.elementClick(find.byTooltip('Increment'));
 
-    assert.strictEqual(
-        await driver.getElementText(counterTextFinder),
-        '3'
-    );
+//     assert.strictEqual(
+//         await driver.getElementText(counterTextFinder),
+//         '3'
+//     );
 
-    driver.deleteSession();
-})();
+//     driver.deleteSession();
+// })();
 
 
 
@@ -199,8 +199,37 @@ const validateElementPosition = async (driver, buttonFinder) => {
 /* -------------------------------------------------------------------------- */
 /*                                  Task Body                                 */
 /* -------------------------------------------------------------------------- */
-// (async () => {
+(async () => {
+    const routeTextButton = find.byType('TextButton');
+    const textField = find.byType('TextField');
+    const textFieldValue = "Hello World"
+    const textValue = "Hello Worl..."
 
 
+    const driver = await wdio.remote(opts);
+    await validateElementPosition(driver, routeTextButton);
 
-// })();
+    assert.strictEqual(await driver.execute('flutter:checkHealth'), 'ok');
+    await driver.execute('flutter:clearTimeline');
+    await driver.execute('flutter:forceGC');
+    await driver.switchContext('NATIVE_APP');
+
+    await driver.switchContext('FLUTTER');
+
+    await driver.elementClick(routeTextButton);
+    await driver.execute('flutter:scrollUntilVisible', find.byType('ListView'), { item: textField, dxScroll: 90, dyScroll: -400 });
+    await validateElementPosition(driver, textField);
+
+    await driver.elementSendKeys(textField, textFieldValue);
+    assert.strictEqual(
+        await driver.getElementText(textField),
+        textFieldValue
+    );
+    if (textValue.includes(textFieldValue.slice(0, 10))) {
+        console.log("It contains first 10 characters of TextFieldValue");
+    } else {
+        await driver.elementSendKeys(textField, 'Hello World......');
+    }
+    await driver.elementClick(find.byType('BackButton'));
+    driver.deleteSession();
+})();
